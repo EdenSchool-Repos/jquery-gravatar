@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jquery gravatar</title>
+    <!-- chargement librairie jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js">
+    </script>
+    <!-- <script src="binarytransport.js"></script> -->
+  </head>
+  <body>
+    <form  name="myForm">
+    <input type="text" name="gravatar" id="gravatar" value="2439389" />
+    <input type="submit" /><br>
+    </form>
+    <div id="output"></div>
+    <script type="text/javascript">
+    // équivaut DOMContentLoaded natif
+        $(document).ready(() => {
+
+        }) // end submit
+
+        
+          // 1 - cibler formulaire et écouter submit formulaire
+            // 2 - empêcher l'actualisation de la page
+            // 3 - récupérer l'id du gravatar en le concaténant avec le site gravatar
+            // (https://avatars3.githubusercontent.com/u/)
+            // 4 - faire la requete ajax avec la bonne méthode et URL
+            // et surtout le bon dataType!!!
+                // 5 - dans le callback de réussite trouver un moyen de 
+                // associer le "blob" de l'image avec une balise <img />
+                // 6 - afficher un message d'erreur au cas où
+    });
+    </script>
+  </body>
+</html>
