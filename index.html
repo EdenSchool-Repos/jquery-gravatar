@@ -7,6 +7,40 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js">
     </script>
     <!-- <script src="binarytransport.js"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style media="screen">
+      img{
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 2px;
+        padding: 5px;
+      }
+      body{
+        background-color: black;
+        color: white;
+
+      }
+      #main{
+        display: flex;
+        flex-flow: row wrap;
+      }
+      a{
+        text-decoration: none;
+        color: cornflowerblue;
+      }
+      div{
+        margin: 10px;
+      }
+
+      .col-sm-5 {
+        background-color: #34495e;
+      }
+
+      .row {
+          width: 100%;
+          margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
     <form  name="myForm">
@@ -16,21 +50,21 @@
     <div id="output"></div>
     <script type="text/javascript">
     // équivaut DOMContentLoaded natif
-        $(document).ready(() => {
-
-        }) // end submit
-
-        
-          // 1 - cibler formulaire et écouter submit formulaire
-            // 2 - empêcher l'actualisation de la page
-            // 3 - récupérer l'id du gravatar en le concaténant avec le site gravatar
-            // (https://avatars3.githubusercontent.com/u/)
-            // 4 - faire la requete ajax avec la bonne méthode et URL
-            // et surtout le bon dataType!!!
-                // 5 - dans le callback de réussite trouver un moyen de 
-                // associer le "blob" de l'image avec une balise <img />
-                // 6 - afficher un message d'erreur au cas où
-    });
+    $(document).ready(() => {
+      $('form').on('submit', event => {
+        event.preventDefault();
+        const url = `https://avatars3.githubusercontent.com/u/${$('#gravatar').val()}`;
+        $.get({
+            url,
+            xhrFields:{ responseType: 'blob' },
+            //dataType: "binary",
+            //processData: false
+        }).done(r => {
+          $("#output").html($("<img/>", { src:URL.createObjectURL(r) }));
+        }).fail(console.error);
+        //}).success(r => console.log(r)).error(console.error);
+      });
+    }); // end submit
     </script>
   </body>
 </html>
